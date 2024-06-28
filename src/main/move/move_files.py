@@ -3,6 +3,7 @@ from src.main.utility.logging_config import *
 
 
 def move_s3_to_s3(s3_client, bucket_name, source_prefix, destination_prefix):
+    logger.info(f"Executing without filename")
     try:
         response = s3_client.list_objects_v2(Bucket=bucket_name, Prefix=source_prefix)
 
@@ -24,8 +25,10 @@ def move_s3_to_s3(s3_client, bucket_name, source_prefix, destination_prefix):
 
 
 def move_s3_to_s3(s3_client, bucket_name, source_prefix, destination_prefix,file_name=None):
+
     try:
         response = s3_client.list_objects_v2(Bucket=bucket_name, Prefix=source_prefix)
+        logger.info(f"{response}")
 
         if file_name is None:
             for obj in response.get('Contents', []):
@@ -37,13 +40,15 @@ def move_s3_to_s3(s3_client, bucket_name, source_prefix, destination_prefix,file
                                                   'Key': source_key}, Key=destination_key)
 
                 s3_client.delete_object(Bucket=bucket_name, Key=source_key)
-            # return f"Data Moved succesfully from {source_prefix} to {destination_prefix}"
+                #return f"Data Moved succesfully from {source_prefix} to {destination_prefix}"
         else:
             for obj in response.get('Contents', []):
                 source_key = obj['Key']
+                logger.info(f"{source_key},{source_prefix}")
 
                 if source_key.endswith(file_name):
                     destination_key = destination_prefix + source_key[len(source_prefix):]
+                    logger.info(f"{destination_key},{destination_prefix}")
 
                     s3_client.copy_object(Bucket=bucket_name,
                                           CopySource={'Bucket': bucket_name,
@@ -64,3 +69,4 @@ def move_s3_to_s3(s3_client, bucket_name, source_prefix, destination_prefix,file
 
 def move_local_to_local():
     pass
+
