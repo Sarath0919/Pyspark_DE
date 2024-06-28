@@ -69,17 +69,14 @@ How to run the program in Pycharm:-
 1. Open the pycharm editor.
 2. Upload or pull the project from GitHub.
 3. Open terminal from bottom pane.
-4. Goto virtual environment and activate it. Let's say you have venv as virtual environament.i) cd venv ii) cd Scripts iii) activate (if activate doesn't work then use ./activate)
-5. Create main.py as explained in my videos on YouTube channel.
+4. Goto virtual environment and activate it. Let's say you have venv as virtual environment.i) cd venv ii) cd Scripts iii) activate (if activate doesn't work then use ./activate)
+5. Create main.py .
 6. You will have to create a user on AWS also and assign s3 full access and provide secret key and access key to the config file.
 6. Run main.py from green play button on top right hand side.
 7. If everything works as expected enjoy, else re-try.
 
 Project Architecture:-
-![Architecture](C:\Users\nikita\Pictures\Screenshots\architecture.png)
+![Architecture](architecture.png)
 
 Database ER Diagram:-
-![Architecture](C:\Users\nikita\Documents\data_engineering\pythonProject\youtube_project\docs\database_schema.drawio.png)
-
-If you get stuck, don't forget to my watch my youtube channel project playlist for better understanding of the flow.
-My youtube channel link:- https://www.youtube.com/channel/UCacvJAgrPTjSEdnZObMzpqQ
+![Architecture](database_schema.drawio.png)
